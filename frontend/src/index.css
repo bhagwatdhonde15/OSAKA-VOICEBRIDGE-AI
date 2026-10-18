@@ -1,0 +1,102 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #070b14;
+  color: #f1f5f9;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Accessibility Senior / Large Text Mode */
+body.font-large {
+  font-size: 1.15rem;
+}
+
+body.font-large h1 {
+  font-size: 2.5rem;
+}
+
+body.font-large h2 {
+  font-size: 1.8rem;
+}
+
+body.font-large h3 {
+  font-size: 1.4rem;
+}
+
+body.font-large p,
+body.font-large span,
+body.font-large button {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast .bg-osaka-card {
+  background-color: #0a0a0a !important;
+  border-color: #ffffff !important;
+}
+
+body.high-contrast .text-slate-400 {
+  color: #e2e8f0 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1322;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2c4a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E5171F;
+}
+
+/* Audio Wave Animation */
+@keyframes pulse-wave {
+  0%, 100% {
+    height: 6px;
+  }
+  50% {
+    height: 32px;
+  }
+}
+
+.animate-wave-1 {
+  animation: pulse-wave 0.8s ease-in-out infinite;
+}
+.animate-wave-2 {
+  animation: pulse-wave 1.1s ease-in-out infinite 0.15s;
+}
+.animate-wave-3 {
+  animation: pulse-wave 0.7s ease-in-out infinite 0.3s;
+}
+.animate-wave-4 {
+  animation: pulse-wave 1.3s ease-in-out infinite 0.2s;
+}
+.animate-wave-5 {
+  animation: pulse-wave 0.9s ease-in-out infinite 0.4s;
+}
