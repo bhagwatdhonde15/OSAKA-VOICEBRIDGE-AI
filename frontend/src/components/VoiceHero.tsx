@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mic, MicOff, Volume2, Play, Square, Send, Globe, Sparkles } from 'lucide-react';
+import { Volume2, Play, Square, Send, Globe, Sparkles } from 'lucide-react';
+import { VoiceOrb } from './VoiceOrb';
 
 interface VoiceHeroProps {
   isListening: boolean;
@@ -19,10 +20,10 @@ interface VoiceHeroProps {
 }
 
 const LANGUAGES = [
-  { code: 'en-US', label: 'English', flag: '🇺🇸', name: 'English' },
-  { code: 'ja-JP', label: '日本語', flag: '🇯🇵', name: 'Japanese' },
-  { code: 'hi-IN', label: 'हिन्दी', flag: '🇮🇳', name: 'Hindi' },
-  { code: 'es-ES', label: 'Español', flag: '🇪🇸', name: 'Spanish' }
+  { code: 'en-US', label: 'English', flag: '🇺🇸' },
+  { code: 'ja-JP', label: '日本語', flag: '🇯🇵' },
+  { code: 'hi-IN', label: 'हिन्दी', flag: '🇮🇳' },
+  { code: 'es-ES', label: 'Español', flag: '🇪🇸' }
 ];
 
 export const VoiceHero: React.FC<VoiceHeroProps> = ({
@@ -52,115 +53,87 @@ export const VoiceHero: React.FC<VoiceHeroProps> = ({
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-osaka-card via-osaka-surface to-osaka-bg border border-osaka-border shadow-2xl p-6 sm:p-8 md:p-10">
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-bridge-card/90 via-bridge-card/60 to-bridge-surface/90 border border-bridge-border shadow-luxury backdrop-blur-xl p-6 sm:p-10">
       
-      {/* Background Decorative Glow */}
-      <div className="absolute top-0 right-1/4 -mt-20 w-80 h-80 rounded-full bg-osaka-red/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 -mb-20 w-80 h-80 rounded-full bg-osaka-cyan/10 blur-3xl pointer-events-none" />
+      {/* Subtle Ambient Radial Lighting */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-24 w-96 h-96 rounded-full bg-bridge-violet/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-10 -mb-24 w-80 h-80 rounded-full bg-bridge-cyan/5 blur-3xl pointer-events-none" />
 
-      {/* Tagline & Impact Banner */}
-      <div className="text-center pb-6 border-b border-osaka-border/60">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-osaka-red/15 border border-osaka-red/30 text-osaka-red text-xs font-black uppercase tracking-widest mb-2">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Impact Osaka Hackathon 2026</span>
+      {/* 5-Second Rule Hero Header */}
+      <div className="text-center max-w-3xl mx-auto pb-6 border-b border-bridge-border/60">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bridge-violet/10 border border-bridge-violet/25 text-bridge-violet text-[11px] font-bold tracking-widest uppercase mb-3 shadow-sm">
+          <Sparkles className="w-3.5 h-3.5 text-bridge-cyan" />
+          <span>Impact Osaka Hackathon 2026 • AI Urban Mobility</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">
-          “One city. Every language. <span className="text-osaka-red">No one left behind.</span>”
+        
+        <h2 className="text-2xl sm:text-4xl font-black text-bridge-text tracking-tight font-sans">
+          “One city. Every language. <span className="bg-gradient-to-r from-bridge-violet via-purple-400 to-bridge-cyan bg-clip-text text-transparent">No one left behind.</span>”
         </h2>
-        <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl mx-auto">
-          Voice-first multilingual AI city assistant breaking language & physical mobility barriers across Osaka transit.
+
+        <p className="text-xs sm:text-sm text-bridge-muted mt-2 leading-relaxed max-w-2xl mx-auto">
+          Solving Osaka's transit labyrinth and language barriers for international travelers and elderly visitors through real-time conversational voice AI.
         </p>
       </div>
 
       {/* Language Selector Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 py-4 border-b border-osaka-border/60">
-        <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-          <Globe className="w-4 h-4 text-osaka-cyan" />
-          <span>Select Your Language:</span>
+      <div className="flex flex-wrap items-center justify-between gap-3 py-4 border-b border-bridge-border/40">
+        <div className="flex items-center gap-2 text-xs font-medium text-bridge-muted">
+          <Globe className="w-3.5 h-3.5 text-bridge-cyan" />
+          <span>Active Language:</span>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {LANGUAGES.map(lang => (
             <button
               key={lang.code}
               onClick={() => onLanguageChange(lang.code)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
                 selectedLanguage === lang.code
-                  ? 'bg-gradient-to-r from-osaka-red to-red-600 text-white shadow-neon-red scale-105'
-                  : 'bg-osaka-surface text-slate-400 border border-osaka-border hover:text-white hover:border-slate-500'
+                  ? 'bg-bridge-violet text-white shadow-[0_0_15px_rgba(139,92,246,0.4)] scale-105'
+                  : 'bg-bridge-surface text-bridge-muted border border-bridge-border hover:text-bridge-text hover:border-bridge-borderLight'
               }`}
             >
-              <span className="text-sm">{lang.flag}</span>
+              <span>{lang.flag}</span>
               <span>{lang.label}</span>
             </button>
           ))}
         </div>
       </div>
 
-      {/* Primary Voice Action Center */}
-      <div className="py-8 flex flex-col items-center justify-center text-center">
+      {/* Interactive Voice Orb Section */}
+      <div className="py-6 flex flex-col items-center justify-center text-center">
         
-        {/* Animated Big Mic Button */}
-        <div className="relative mb-6">
-          {isListening && (
-            <>
-              <div className="absolute inset-0 rounded-full bg-osaka-cyan/30 animate-ping scale-125" />
-              <div className="absolute inset-0 rounded-full bg-osaka-red/20 animate-pulse scale-150" />
-            </>
-          )}
+        <VoiceOrb
+          isListening={isListening}
+          isPlayingAudio={isPlayingAudio}
+          onToggleListen={isListening ? onStopListening : onStartListening}
+          voiceProviderName={voiceProviderName}
+        />
 
-          <button
-            onClick={isListening ? onStopListening : onStartListening}
-            className={`relative z-10 w-28 h-28 sm:w-32 sm:h-32 rounded-full flex flex-col items-center justify-center transition-all duration-300 shadow-2xl focus:outline-none focus:ring-4 ${
-              isListening
-                ? 'bg-gradient-to-br from-cyan-400 to-blue-600 text-white shadow-neon-cyan scale-110 focus:ring-cyan-400/50'
-                : 'bg-gradient-to-br from-osaka-red via-red-600 to-amber-600 text-white shadow-neon-red hover:scale-105 focus:ring-red-500/50'
-            }`}
-            aria-label={isListening ? 'Stop listening' : 'Start speaking'}
-          >
-            {isListening ? (
-              <>
-                <MicOff className="w-10 h-10 mb-1 animate-bounce" />
-                <span className="text-[11px] font-black tracking-wider uppercase">Listening</span>
-              </>
-            ) : (
-              <>
-                <Mic className="w-11 h-11 mb-1" />
-                <span className="text-[11px] font-black tracking-wider uppercase">Tap to Speak</span>
-              </>
-            )}
-          </button>
-        </div>
-
-        {/* Live Audio Visualizer Bars if playing */}
+        {/* Live Audio Visualizer Waveform Bar if playing */}
         {isPlayingAudio && (
-          <div className="flex items-center gap-1.5 h-10 mb-4 px-4 py-2 rounded-full bg-osaka-card border border-osaka-border shadow-inner">
-            <span className="text-xs font-semibold text-emerald-400 mr-2 flex items-center gap-1.5">
-              <Volume2 className="w-4 h-4 animate-pulse" />
-              Voice Playing
+          <div className="flex items-center gap-1.5 h-10 px-4 py-2 my-2 rounded-full bg-bridge-surface border border-bridge-border shadow-inner animate-fade-in">
+            <span className="text-xs font-medium text-bridge-cyan mr-2 flex items-center gap-1.5">
+              <Volume2 className="w-3.5 h-3.5 animate-pulse" />
+              Speaking Audio
             </span>
-            <div className="w-1.5 bg-osaka-cyan rounded-full animate-wave-1" />
-            <div className="w-1.5 bg-osaka-red rounded-full animate-wave-2" />
-            <div className="w-1.5 bg-amber-400 rounded-full animate-wave-3" />
-            <div className="w-1.5 bg-osaka-green rounded-full animate-wave-4" />
-            <div className="w-1.5 bg-purple-400 rounded-full animate-wave-5" />
+            <div className="w-1 bg-bridge-cyan rounded-full wave-bar-1" />
+            <div className="w-1 bg-bridge-violet rounded-full wave-bar-2" />
+            <div className="w-1 bg-purple-400 rounded-full wave-bar-3" />
+            <div className="w-1 bg-bridge-cyan rounded-full wave-bar-4" />
+            <div className="w-1 bg-bridge-violet rounded-full wave-bar-5" />
+            <div className="w-1 bg-purple-300 rounded-full wave-bar-6" />
           </div>
         )}
 
-        {/* Subtitle / Instructions */}
-        <p className="text-sm sm:text-base font-medium text-slate-300 max-w-xl mb-4">
-          {isListening
-            ? 'Listening... Speak in English, 日本語, हिन्दी, or Español.'
-            : 'Press the microphone and speak your destination, question, or need.'}
-        </p>
-
-        {/* Live Transcript Bubble */}
+        {/* Live Transcript Card */}
         {(transcript || isListening) && (
-          <div className="w-full max-w-2xl bg-osaka-surface/90 border border-osaka-cyan/40 rounded-2xl p-4 mb-6 shadow-neon-cyan/20 animate-fade-in text-left">
-            <div className="flex items-center justify-between text-xs text-osaka-cyan font-bold uppercase tracking-wider mb-1">
+          <div className="w-full max-w-2xl bg-bridge-surface/90 border border-bridge-cyan/40 rounded-2xl p-4 my-3 text-left shadow-luxury animate-fade-in">
+            <div className="flex items-center justify-between text-[11px] text-bridge-cyan font-bold uppercase tracking-wider mb-1">
               <span>Voice Transcript</span>
-              {isListening && <span className="animate-pulse">● Live Recognition</span>}
+              {isListening && <span className="animate-pulse">● Live Input</span>}
             </div>
-            <p className="text-base sm:text-lg text-white font-medium italic">
+            <p className="text-sm sm:text-base text-bridge-text font-medium italic">
               "{transcript || 'Listening for your voice...'}"
             </p>
           </div>
@@ -168,43 +141,43 @@ export const VoiceHero: React.FC<VoiceHeroProps> = ({
 
         {/* Spoken Response Player Bar */}
         {spokenResponseText && (
-          <div className="w-full max-w-2xl bg-osaka-surface/80 border border-osaka-border rounded-2xl p-4 mb-6 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="w-full max-w-2xl bg-bridge-surface/90 border border-bridge-border rounded-2xl p-4 my-3 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-luxury">
             <div className="flex items-start gap-3">
               <button
                 onClick={isPlayingAudio ? onStopAudio : onPlaySpokenResponse}
-                className="flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white flex items-center justify-center hover:scale-105 transition-all shadow-md"
+                className="flex-shrink-0 w-10 h-10 rounded-xl bg-bridge-violet hover:bg-bridge-violetHover text-white flex items-center justify-center transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)]"
                 title={isPlayingAudio ? 'Pause Spoken Audio' : 'Play Spoken Audio'}
               >
-                {isPlayingAudio ? <Square className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
+                {isPlayingAudio ? <Square className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
               </button>
               <div>
                 <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-xs font-bold text-emerald-400 uppercase tracking-wide">
-                    Spoken Response
+                  <span className="text-[11px] font-bold text-bridge-cyan uppercase tracking-wider">
+                    Assistant Voice
                   </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-bridge-card text-bridge-muted border border-bridge-border">
                     {voiceProviderName}
                   </span>
                 </div>
-                <p className="text-sm text-slate-200 line-clamp-2">
+                <p className="text-xs sm:text-sm text-bridge-text line-clamp-2">
                   {spokenResponseText}
                 </p>
               </div>
             </div>
 
             {/* Senior Speed Control */}
-            <div className="flex items-center gap-2 self-end sm:self-center border-t sm:border-t-0 pt-2 sm:pt-0 border-osaka-border w-full sm:w-auto justify-end">
-              <span className="text-[11px] text-slate-400 font-semibold">Speed:</span>
+            <div className="flex items-center gap-1.5 self-end sm:self-center border-t sm:border-t-0 pt-2 sm:pt-0 border-bridge-border w-full sm:w-auto justify-end">
+              <span className="text-[10px] text-bridge-muted font-medium">Speed:</span>
               {[0.8, 1.0, 1.2].map(speed => (
                 <button
                   key={speed}
                   onClick={() => onChangeAudioSpeed(speed)}
-                  className={`px-2 py-1 rounded text-xs font-bold transition-all ${
+                  className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-all ${
                     audioSpeed === speed
-                      ? 'bg-amber-500 text-black shadow-neon-gold'
-                      : 'bg-osaka-card text-slate-400 hover:text-white border border-osaka-border'
+                      ? 'bg-bridge-cyan text-slate-950 font-bold shadow-sm'
+                      : 'bg-bridge-card text-bridge-muted hover:text-bridge-text border border-bridge-border'
                   }`}
-                  title={speed === 0.8 ? 'Slow speed recommended for seniors & non-native listeners' : `Speed ${speed}x`}
+                  title={speed === 0.8 ? 'Slow pace recommended for seniors' : `Speed ${speed}x`}
                 >
                   {speed === 0.8 ? '0.8x (Senior)' : `${speed}x`}
                 </button>
@@ -213,23 +186,23 @@ export const VoiceHero: React.FC<VoiceHeroProps> = ({
           </div>
         )}
 
-        {/* Text Input Fallback Form */}
-        <form onSubmit={handleSubmit} className="w-full max-w-2xl flex items-center gap-2">
+        {/* Text Input Fallback Bar */}
+        <form onSubmit={handleSubmit} className="w-full max-w-2xl flex items-center gap-2 mt-4">
           <div className="relative flex-1">
             <input
               type="text"
               value={inputText}
               onChange={e => setInputText(e.target.value)}
-              placeholder="Or type here: e.g., 'How do I reach Osaka Station with no stairs?'"
-              className="w-full px-4 py-3.5 rounded-xl bg-osaka-surface border border-osaka-border text-slate-100 placeholder-slate-500 focus:outline-none focus:border-osaka-cyan focus:ring-1 focus:ring-osaka-cyan text-sm sm:text-base font-normal shadow-inner"
+              placeholder="Or type your destination or question: e.g., 'How do I reach Osaka Station with no stairs?'"
+              className="w-full px-4 py-3 rounded-xl bg-bridge-surface border border-bridge-border text-bridge-text placeholder-bridge-subtle focus:outline-none focus:border-bridge-cyan/60 focus:ring-1 focus:ring-bridge-cyan/40 text-xs sm:text-sm shadow-inner transition-colors"
             />
           </div>
           <button
             type="submit"
-            className="px-5 py-3.5 rounded-xl bg-gradient-to-r from-osaka-red to-red-600 text-white font-bold text-sm flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-neon-red flex-shrink-0"
+            className="px-4 py-3 rounded-xl bg-bridge-violet hover:bg-bridge-violetHover text-white font-semibold text-xs sm:text-sm flex items-center gap-1.5 transition-all shadow-luxury flex-shrink-0"
           >
             <span>Ask</span>
-            <Send className="w-4 h-4" />
+            <Send className="w-3.5 h-3.5" />
           </button>
         </form>
 

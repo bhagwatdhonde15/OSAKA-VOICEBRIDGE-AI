@@ -99,7 +99,7 @@ export function App() {
       setVoiceProviderName(
         h.voice_engine.elevenlabs_configured
           ? 'ElevenLabs Neural Speech'
-          : 'Web Speech API (High-Clarity Local TTS)'
+          : 'Web Speech Engine (High-Clarity Local TTS)'
       );
 
       // Auto-load Scenario 1: Finding Osaka Station
@@ -274,7 +274,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-osaka-bg flex flex-col font-sans selection:bg-osaka-red selection:text-white">
+    <div className="min-h-screen bg-bridge-bg text-bridge-text flex flex-col font-sans selection:bg-bridge-violet selection:text-white">
       
       {/* Navigation Header */}
       <Navbar
@@ -294,14 +294,14 @@ export function App() {
         
         {/* Error Notification Banner if backend offline */}
         {errorNotice && (
-          <div className="p-4 rounded-2xl bg-red-950/60 border border-red-500/50 text-red-200 text-sm flex items-center justify-between gap-3 shadow-lg">
+          <div className="p-4 rounded-2xl bg-bridge-card border border-rose-500/40 text-rose-200 text-xs sm:text-sm flex items-center justify-between gap-3 shadow-luxury">
             <div className="flex items-center gap-2">
-              <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+              <AlertCircle className="w-5 h-5 text-rose-400 flex-shrink-0" />
               <span>{errorNotice}</span>
             </div>
             <button
               onClick={loadInitialData}
-              className="px-3 py-1.5 rounded-lg bg-red-800 hover:bg-red-700 text-white font-bold text-xs flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-lg bg-rose-900/60 hover:bg-rose-800 text-white font-semibold text-xs flex items-center gap-1.5 transition-colors"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Retry</span>
@@ -342,7 +342,7 @@ export function App() {
           onSelectScenario={handleRunScenario}
         />
 
-        {/* Dedicated AI Decision Panel */}
+        {/* Dedicated AI Decision Observability Panel */}
         {queryResult?.ai_decision && (
           <AIDecisionPanel
             decision={queryResult.ai_decision}
@@ -354,11 +354,11 @@ export function App() {
         {/* Results Section */}
         {isLoading ? (
           <div className="py-20 flex flex-col items-center justify-center text-center space-y-3">
-            <Loader2 className="w-10 h-10 text-osaka-red animate-spin" />
-            <p className="text-base font-bold text-white">
+            <Loader2 className="w-9 h-9 text-bridge-violet animate-spin" />
+            <p className="text-sm sm:text-base font-bold text-bridge-text">
               Consulting Osaka Metro Barrier-Free Database...
             </p>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-bridge-muted">
               Matching elevator exits, minimal walking transfers, and native spoken guidance.
             </p>
           </div>

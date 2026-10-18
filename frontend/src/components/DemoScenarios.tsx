@@ -16,28 +16,28 @@ export const DemoScenarios: React.FC<DemoScenariosProps> = ({
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'accessibility':
-        return <Accessibility className="w-5 h-5 text-emerald-400" />;
+        return <Accessibility className="w-4 h-4 text-bridge-cyan" />;
       case 'train':
-        return <Train className="w-5 h-5 text-osaka-red" />;
+        return <Train className="w-4 h-4 text-bridge-violet" />;
       case 'languages':
-        return <Languages className="w-5 h-5 text-amber-400" />;
+        return <Languages className="w-4 h-4 text-bridge-osakaGold" />;
       default:
-        return <Sparkles className="w-5 h-5 text-cyan-400" />;
+        return <Sparkles className="w-4 h-4 text-bridge-cyan" />;
     }
   };
 
   return (
-    <section className="py-6">
-      <div className="flex items-center justify-between mb-4">
+    <section className="py-4">
+      <div className="flex items-center justify-between mb-3.5">
         <div>
-          <h2 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
-            <span>Official Hackathon Demo Scenarios</span>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-osaka-red/20 text-osaka-red border border-osaka-red/40 uppercase tracking-wider font-bold">
-              1-Click Test
+          <h2 className="text-base sm:text-lg font-bold text-bridge-text flex items-center gap-2">
+            <span>Verified Hackathon Scenarios</span>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-bridge-violet/15 text-bridge-violet border border-bridge-violet/30 uppercase tracking-wider">
+              1-Click Demo
             </span>
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Pre-configured real-world Osaka navigation challenges for international tourists & elderly visitors.
+          <p className="text-xs text-bridge-muted mt-0.5">
+            Demonstrating end-to-end voice assistance for Osaka's most frequent transit challenges.
           </p>
         </div>
       </div>
@@ -49,45 +49,45 @@ export const DemoScenarios: React.FC<DemoScenariosProps> = ({
             <div
               key={scenario.id}
               onClick={() => onSelectScenario(scenario)}
-              className={`group cursor-pointer rounded-2xl p-5 border transition-all duration-300 relative flex flex-col justify-between ${
+              className={`group cursor-pointer rounded-2xl p-5 border transition-all duration-200 relative flex flex-col justify-between ${
                 isActive
-                  ? 'bg-gradient-to-b from-osaka-card to-osaka-surface border-osaka-cyan shadow-neon-cyan scale-[1.02]'
-                  : 'bg-osaka-card/80 border-osaka-border hover:border-slate-500 hover:bg-osaka-card hover:scale-[1.01]'
+                  ? 'bg-bridge-card border-bridge-cyan/60 shadow-[0_0_20px_rgba(103,232,249,0.15)] scale-[1.01]'
+                  : 'bg-bridge-card/75 border-bridge-border hover:border-bridge-borderLight hover:bg-bridge-cardHover hover:shadow-luxury'
               }`}
             >
-              {/* Badge & Icon */}
+              {/* Card Header & Content */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-osaka-surface flex items-center justify-center border border-osaka-border group-hover:border-slate-500 transition-colors">
+                  <div className="w-9 h-9 rounded-xl bg-bridge-surface flex items-center justify-center border border-bridge-border group-hover:border-bridge-borderLight transition-colors">
                     {getIcon(scenario.icon)}
                   </div>
-                  <span className={`text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider ${
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
                     scenario.category === 'accessibility'
-                      ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
+                      ? 'bg-bridge-cyan/15 text-bridge-cyan border border-bridge-cyan/30'
                       : scenario.category === 'transit'
-                      ? 'bg-osaka-red/15 text-red-300 border border-osaka-red/30'
+                      ? 'bg-bridge-violet/15 text-bridge-violet border border-bridge-violet/30'
                       : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
                   }`}>
                     {scenario.badge}
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-white group-hover:text-osaka-cyan transition-colors mb-1">
+                <h3 className="text-sm sm:text-base font-bold text-bridge-text group-hover:text-bridge-cyan transition-colors mb-1">
                   {scenario.title}
                 </h3>
-                <p className="text-xs font-semibold text-slate-400 mb-3">
+                <p className="text-xs text-bridge-muted mb-3 font-medium">
                   {scenario.subtitle}
                 </p>
 
-                <div className="p-3 rounded-xl bg-osaka-surface/90 border border-osaka-border/60 text-xs text-slate-300 italic mb-4">
+                <div className="p-3 rounded-xl bg-bridge-surface/90 border border-bridge-border/60 text-xs text-bridge-text/90 italic mb-4 leading-relaxed">
                   "{scenario.user_query}"
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="pt-3 border-t border-osaka-border/50 flex items-center justify-between text-xs font-bold text-osaka-cyan group-hover:translate-x-1 transition-transform">
-                <span>Run Scenario</span>
-                <ArrowRight className="w-4 h-4 ml-1" />
+              {/* Bottom Action Indicator */}
+              <div className="pt-3 border-t border-bridge-border/50 flex items-center justify-between text-xs font-semibold text-bridge-cyan group-hover:translate-x-0.5 transition-transform">
+                <span>Run Demonstration</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1" />
               </div>
             </div>
           );
